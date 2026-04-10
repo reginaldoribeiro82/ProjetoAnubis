@@ -8,10 +8,8 @@ from docxtpl import DocxTemplate
 # ==========================================
 # CONFIGURAÇÃO E INTERFACE
 # ==========================================
-# Alterado o ícone da página para a Ankh (cruz do anúbis)
 st.set_page_config(page_title="Anubis - Automação", page_icon="☥")
 
-# Título com o novo símbolo ☥
 st.title("Bem-vindo ao Anubis ☥")
 st.write("Processamento de Relatórios GC-FID para Dosagem Alcoólica.")
 
@@ -60,8 +58,10 @@ if pdf_file and docx_file:
                         resultado_texto = "Pelos exames cromatográficos efetuados, NÃO se constatou a presença de etanol na amostra analisada."
                         mostrar_tabela = False
 
-                    # Nome do arquivo conforme solicitado: Laudo_120_26.docx
-                    nome_arquivo_word = f"Laudo_{identificacao.replace('/', '_')}.docx"
+                    # ========================================================
+                    # AQUI ESTÁ A GARANTIA DO NOME CORRETO (Ex: 120-26.docx)
+                    # ========================================================
+                    nome_arquivo_word = f"{identificacao.replace('/', '-')}.docx"
 
                     doc = DocxTemplate(docx_file)
                     contexto = {
@@ -103,7 +103,7 @@ if pdf_file and docx_file:
                 )
 
 # ==========================================
-# RODAPÉ (FIM DA TELA)
+# RODAPÉ
 # ==========================================
 st.markdown("---")
 st.caption("Powered by Reginaldo Ribeiro")
